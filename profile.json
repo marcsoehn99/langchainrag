@@ -1,0 +1,46 @@
+{
+  "device": {
+    "model": "Stiebel Eltron WPL-A 07 HK 230 premium",
+    "serial_number": null,
+    "commissioning_date": "2023-09-22",
+    "installation_year": 2023
+  },
+  "installation": {
+    "heating_circuits": [
+      {
+        "id": 1,
+        "name": "Heizkreis 1"
+      }
+    ],
+    "heating_surfaces": null,
+    "buffer_tank": {
+      "present": null,
+      "capacity_liters": null,
+      "type": null
+    },
+    "hot_water_tank": {
+      "present": null,
+      "capacity_liters": null
+    },
+    "auxiliary_heater": {
+      "present": null,
+      "type": "electric",
+      "power_kw": null
+    }
+  },
+  "control": {
+    "controller_model": null,
+    "outdoor_temperature_sensor": true,
+    "heating_curve": {
+      "slope": null,
+      "level": null
+    }
+  },
+  "special_features": {
+    "pv_surplus_usage": false,
+    "time_programs": []
+  },
+  "maintenance": {
+    "last_service_date": "2024-09-01"
+  }
+}

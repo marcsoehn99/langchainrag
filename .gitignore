@@ -35,7 +35,6 @@ pytest_cache/
 
 # FAISS Index & Daten
 waermepumpe_index/
-docs/
 
 # Jupyter Notebook Checkpoints
 .ipynb_checkpoints/
