@@ -11,7 +11,7 @@ if not os.getenv("OPENAI_API_KEY"):
 
 
 emb = OpenAIEmbeddings(model="text-embedding-3-small")
-vs = FAISS.load_local("./faiss_demo", embeddings=emb, allow_dangerous_deserialization=True)
+vs = FAISS.load_local("./waermepumpe_index", embeddings=emb, allow_dangerous_deserialization=True)
 retriever = vs.as_retriever(search_kwargs={"k": 3})
 
 
@@ -40,5 +40,5 @@ agent = create_tool_calling_agent(llm, TOOLS, prompt)
 executor = AgentExecutor(agent=agent, tools=TOOLS, verbose=True)
 
 if __name__ == "__main__":
-    out = executor.invoke({"input": "wann ist conny geboren? nutze dein suchtool", "chat_history": []})
+    out = executor.invoke({"input": "Wie setze ich Warmwasser auf ECO, nutze das suchtool", "chat_history": []})
     print(out["output"])
