@@ -18,8 +18,8 @@ vs = FAISS.load_local("./waermepumpe_index", embeddings=emb, allow_dangerous_des
 retriever = vs.as_retriever(search_kwargs={"k": 4})
 
 # --- LLMs ---
-# kleines, günstiges Modell ist hier ok
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# GPT-5 braucht temperature 1
+llm = ChatOpenAI(model="gpt-5", temperature=1)
 
 # Prompt für den RAG-Schritt (Antwort nur aus Kontext)
 rag_prompt = ChatPromptTemplate.from_template(
