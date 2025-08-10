@@ -1,1 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual Environments
+venv/
+.venv/
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# Logs / Cache
+*.log
+*.tmp
+*.temp
+*.cache
+.cache/
+pytest_cache/
+
+# Environment / Secrets
 .env
+.env.*
+
+# FAISS Index & Daten
+waermepumpe_index/
+docs/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
