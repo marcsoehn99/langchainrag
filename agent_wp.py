@@ -101,18 +101,24 @@ def _rerank_by_profile(docs):
         return 1 if ("heizkreis 2" in txt or "hk2" in txt) else 0
     return sorted(docs, key=penalty)
 
-@tool
+@tool(return_direct=True)  # <-- Antwort geht direkt an den User
 def ask_manual(question: str) -> str:
     """Beantworte eine Frage zur Wärmepumpe basierend auf den gescannten Anleitungen (RAG)."""
     docs = retriever.invoke(question)
     docs = _rerank_by_profile(docs)
+
     if not docs:
         return "Im Handbuch konnte ich dazu keine Information finden."
+
     context = _format_ctx(docs)
     if not context.strip():
         return "Im Handbuch konnte ich dazu keine Information finden."
-    # Profil wird hier injiziert; RAG-Antwort wird mit DEMSELBEN llm erzeugt
-    return rag_chain.invoke({"question": question, "context": context, "profile": PROFILE_TXT})
+
+    return rag_chain.invoke({
+        "question": question,
+        "context": context,
+        "profile": PROFILE_TXT
+    })
 
 TOOLS = [ask_manual]
 
@@ -130,6 +136,6 @@ agent = create_tool_calling_agent(llm, TOOLS, agent_prompt)
 executor = AgentExecutor(agent=agent, tools=TOOLS, verbose=True)
 
 if __name__ == "__main__":
-    q = "wie reguliere ich meine heizungstemperatur über meine wärmepumpe?"
+    q = "lohnt es sich für mich smarte thermostate für meine heizungen zu kaufen mit meiner wärmepumpe?"
     out = executor.invoke({"input": q, "chat_history": []})
     print("\n--- Antwort ---\n", out["output"])

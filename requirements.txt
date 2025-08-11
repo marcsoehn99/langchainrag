@@ -8,3 +8,6 @@ tiktoken>=0.3.0
 langchain_community
 pypdf
 azure-ai-formrecognizer>=3.3.3
+fastapi>=0.111
+uvicorn[standard]>=0.30
+sse-starlette>=2.1
